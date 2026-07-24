@@ -1,4 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const uiStyle = document.createElement('style');
+  uiStyle.textContent = `
+    .season-buttons { gap: 6px; }
+    .season-buttons .season, #timelineButtons .season {
+      width: auto; min-width: 48px; height: 31px; padding: 0 8px;
+      white-space: nowrap; line-height: 29px; border-radius: 0;
+    }
+    @media (max-width: 800px) {
+      .season-buttons { gap: 4px; }
+      .season-buttons .season, #timelineButtons .season { min-width: 43px; padding: 0 6px; font-size: 11px; }
+    }
+  `;
+  document.head.appendChild(uiStyle);
+
   const titles = ['王国地图 · Realm Map', '编年史 · Chronicle', '人物关系 · Blood & Oaths', '冰火世界大典 · Great Codex'];
   document.querySelectorAll('.tab').forEach((tab, index) => { if (titles[index]) tab.textContent = titles[index]; });
 
