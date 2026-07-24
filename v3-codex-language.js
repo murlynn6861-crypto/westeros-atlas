@@ -20,4 +20,56 @@ document.addEventListener('DOMContentLoaded', () => {
       panel.innerHTML = `<h2 class="manuscript-title">${entry[0]}</h2><p>${entry[2]}</p><h3>条目示例 · Entry</h3><p>${entry[3]}</p><p class="source-note">来源 · Sources：${entry[4]}</p>`;
     });
   });
+
+  // 电视剧改编线：界面中文为主，英文仅保留为正式剧名与检索术语。
+  const chronicle = [
+    ['第一季：权力的游戏（A Game of Thrones）', '王权继承危机从君临蔓延至北境、河间地与狭海彼岸。', [
+      ['伊耿历 298 年', '国王之手之死', '琼恩·艾林死亡后，艾德·史塔克受劳勃召唤前往君临，并逐步发现王室子嗣的真相。', 'GoT S1E1–E7'],
+      ['伊耿历 298 年', '艾德之死', '乔佛里下令处决艾德，谈判破裂，北境与兰尼斯特的战争全面爆发。', 'GoT S1E9'],
+      ['伊耿历 298 年', '龙焰重临', '丹妮莉丝在卓戈的葬礼火堆中孵化三条龙，坦格利安复辟线由此展开。', 'GoT S1E10']]],
+    ['第二季：列王的纷争（A Clash of Kings）', '五位君王分别提出主张；黑水河之战决定君临暂时不易手。', [
+      ['伊耿历 299 年', '五王之战', '乔佛里、史坦尼斯、蓝礼、罗柏与巴隆分别争夺王位或独立，战线横贯维斯特洛。', 'GoT S2'],
+      ['伊耿历 299 年', '黑水河之战', '提利昂以野火阻滞史坦尼斯舰队，提利尔—兰尼斯特同盟及时抵达，守住首都。', 'GoT S2E9'],
+      ['伊耿历 299 年', '临冬城陷落', '席恩占领临冬城，随后波顿势力借机控制北境局势。', 'GoT S2E6–E10']]],
+    ['第三季：冰雨的风暴（A Storm of Swords）', '政治同盟在婚宴上以背叛收场，奴隶湾则出现新的解放力量。', [
+      ['伊耿历 300 年', '红色婚礼', '佛雷与波顿在兰尼斯特支持下杀害罗柏、凯特琳及北境随从，北境同盟瓦解。', 'GoT S3E9'],
+      ['伊耿历 300 年', '解放无垢者', '丹妮莉丝夺取阿斯塔波并带走无垢者，开始以“解放者”身份进入奴隶湾。', 'GoT S3E4'],
+      ['伊耿历 300 年', '越过长城', '琼恩随自由民翻越长城，与耶哥蕊特建立感情，也更理解长城以北的危机。', 'GoT S3E5–E10']]],
+    ['第四季：守誓人（Oathkeeper）', '兰尼斯特权势达到顶点，又迅速被内部冲突侵蚀。', [
+      ['伊耿历 300 年', '紫色婚礼', '乔佛里在婚宴上中毒身亡，提利昂被指控；此案重塑君临权力关系。', 'GoT S4E2'],
+      ['伊耿历 300 年', '审判比武', '奥柏伦为提利昂出战却死于魔山之手，多恩对兰尼斯特的仇恨进一步加深。', 'GoT S4E8'],
+      ['伊耿历 300 年', '守夜人保卫长城', '琼恩协助守夜人击退曼斯·雷德的进攻，长城威胁转为公开战争。', 'GoT S4E9']]],
+    ['第五季：与龙共舞（A Dance with Dragons）', '信仰、冰与火同时抬头，旧有的政治秩序出现裂口。', [
+      ['伊耿历 300 年', '艰难屯之战', '夜王屠戮自由民，琼恩亲眼见证异鬼军团的规模。', 'GoT S5E8'],
+      ['伊耿历 300 年', '羞辱游行', '大麻雀审判瑟曦；她的屈辱成为后来报复性重塑君临的伏笔。', 'GoT S5E10'],
+      ['伊耿历 300 年', '琼恩死而复生', '守夜人叛变者刺杀琼恩，梅丽珊卓随后将他复活。', 'GoT S5E10 / S6E2']]],
+    ['第六季：凛冬的寒风（The Winds of Winter）', '北境被夺回，君临被野火改写，丹妮莉丝终于向西出航。', [
+      ['伊耿历 300 年', '私生子之战', '琼恩与珊莎夺回临冬城；谷地骑士的介入扭转战局，拉姆斯被处决。', 'GoT S6E9'],
+      ['伊耿历 300 年', '贝勒大圣堂爆炸', '瑟曦引爆野火，杀死大麻雀、玛格丽与洛拉斯，并在其后自立为女王。', 'GoT S6E10'],
+      ['伊耿历 300 年', '北境之王', '北境诸侯拥立琼恩；布兰的记忆线同时提示其出身之谜。', 'GoT S6E10']]],
+    ['第七季：冰与火之歌（The Dragon and the Wolf）', '两位女王争夺七国，而亡者大军突破长城。', [
+      ['伊耿历 300 年', '战利品列车之战', '丹妮莉丝骑卓耿突袭兰尼斯特军队，龙在维斯特洛战场首次展现决定性力量。', 'GoT S7E4'],
+      ['伊耿历 300 年', '龙穴大会', '琼恩展示尸鬼以求停战；瑟曦表面同意，实则准备违背承诺。', 'GoT S7E7'],
+      ['伊耿历 300 年', '长城崩塌', '被夜王复生的韦赛里昂摧毁东海望防线，亡者大军南下。', 'GoT S7E7']]],
+    ['第八季：铁王座（The Iron Throne）', '长夜结束，最终的征服战争亦摧毁了铁王座本身。', [
+      ['伊耿历 300 年', '长夜之战', '艾莉亚在临冬城杀死夜王，亡者军团随之覆灭。', 'GoT S8E3'],
+      ['伊耿历 300 年', '钟声之后', '君临投降后，丹妮莉丝焚毁城市，琼恩对她的忠诚彻底破裂。', 'GoT S8E5'],
+      ['伊耿历 300 年', '新的秩序', '琼恩杀死丹妮莉丝；布兰当选国王，珊莎统治独立的北境，艾莉亚向西航行。', 'GoT S8E6']]]
+  ];
+
+  let selectedSeason = 0;
+  const renderChronicle = () => {
+    const record = chronicle[selectedSeason];
+    const events = document.getElementById('events');
+    const index = document.getElementById('seasonIndex');
+    if (!events || !index) return;
+    events.innerHTML = `<h2>${record[0]}</h2><p class="season-desc">${record[1]}</p>${record[2].map(([year, title, text, source]) => `<article class="event"><div class="event-year">${year}</div><div><h3>${title}</h3><p>${text}</p><div class="event-tags">改编来源 · ${source}</div></div></article>`).join('')}`;
+    index.innerHTML = chronicle.map((season, i) => `<button class="season-nav ${i === selectedSeason ? 'active' : ''}" data-season="${i}">第 ${i + 1} 季<span>${season[0].split('：')[1]}</span></button>`).join('');
+    index.querySelectorAll('.season-nav').forEach(button => button.addEventListener('click', () => { selectedSeason = Number(button.dataset.season); renderChronicle(); }));
+    document.querySelectorAll('#seasonButtons, #timelineButtons').forEach(container => {
+      container.innerHTML = chronicle.map((_, i) => `<button class="season ${i === selectedSeason ? 'active' : ''}" data-season="${i}">第${i + 1}季</button>`).join('');
+      container.querySelectorAll('.season').forEach(button => button.addEventListener('click', () => { selectedSeason = Number(button.dataset.season); renderChronicle(); }));
+    });
+  };
+  renderChronicle();
 });
